@@ -9,7 +9,12 @@ import 'dotenv/config';
         host: process.env.DB_HOST,
         dialect: process.env.DB_DIALECT,
         logging:console.log,
-        ssl:true,
+        dialectOptions: {
+            ssl: {
+                require: true, //esto indica que es necesario el certificado ssl
+                rejectUnauthorized: false //esto evita el errores de autenticacion de ssl
+            }
+        }
     }
  
  )
